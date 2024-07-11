@@ -8,8 +8,8 @@
                         "data": {
                             "id": 0,
                             "position": {
-                                "x": 17.0,
-                                "y": 13.0
+                                "x": 11.0,
+                                "y": 18.0
                             },
                             "support": 0,
                             "load": {
@@ -27,8 +27,84 @@
                         "data": {
                             "id": 1,
                             "position": {
-                                "x": 22.0,
+                                "x": 20.0,
+                                "y": 18.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483651,
+                        "data": {
+                            "id": 2,
+                            "position": {
+                                "x": 11.0,
+                                "y": 24.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483652,
+                        "data": {
+                            "id": 3,
+                            "position": {
+                                "x": 20.0,
+                                "y": 24.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483653,
+                        "data": {
+                            "id": 4,
+                            "position": {
+                                "x": 13.0,
                                 "y": 30.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483654,
+                        "data": {
+                            "id": 5,
+                            "position": {
+                                "x": 24.0,
+                                "y": 36.0
                             },
                             "support": 0,
                             "load": {
@@ -46,7 +122,7 @@
             "materials": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483651,
+                        "id": 2147483655,
                         "data": {
                             "name": "Padrão",
                             "E": 2500000000.0,
@@ -56,7 +132,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483652,
+                        "id": 2147483656,
                         "data": {
                             "name": "Concreto C20",
                             "E": 2500000000.0,
@@ -66,7 +142,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483653,
+                        "id": 2147483657,
                         "data": {
                             "name": "Aço",
                             "E": 199999995904.0,
@@ -80,7 +156,7 @@
             "sections": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483654,
+                        "id": 2147483658,
                         "data": {
                             "name": "Padrão",
                             "area": 0.05999999865889549,
@@ -90,7 +166,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483655,
+                        "id": 2147483659,
                         "data": {
                             "name": "Retangular 20x40",
                             "area": 0.05999999865889549,
@@ -100,7 +176,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483656,
+                        "id": 2147483660,
                         "data": {
                             "name": "Circular d30",
                             "area": 0.07068579643964768,
@@ -123,14 +199,102 @@
                             "id": 2
                         }
                     },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 7
+                        }
+                    },
                     "section": {
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 12
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "endNode": {
                         "ptr_wrapper": {
                             "id": 6
                         }
                     },
                     "material": {
                         "ptr_wrapper": {
-                            "id": 3
+                            "id": 9
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 10
                         }
                     }
                 }

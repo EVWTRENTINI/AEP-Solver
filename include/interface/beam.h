@@ -21,7 +21,7 @@ Beam() = default;
 Beam(std::shared_ptr<Node> start, std::shared_ptr<Node> end, std::shared_ptr<BeamMaterial> mat, std::shared_ptr<BeamSection> sec) : startNode(start), endNode(end), material(mat), section(sec) {}
 
 void displayInfo() {
-        std::cout << "A barra começa no nó: " << startNode->id << ", termina no nó: " << endNode->id << " Tem a seção:"<< section->name << " e é do material:"<< material->name << std::endl;
+        std::cout << "A barra começa no nó: " << startNode->id << ", termina no nó: " << endNode->id  << " e é do material:"<< material->name << " Tem a seção:"<< section->name << std::endl;
 }
 
 void DrawFill(Camera2D camera) const{
@@ -41,8 +41,8 @@ template <class Archive>
         ar(
             cereal::make_nvp("startNode", startNode),
             cereal::make_nvp("endNode", endNode),
-            cereal::make_nvp("section", section),
-            cereal::make_nvp("material", material)
+            cereal::make_nvp("material", material),
+            cereal::make_nvp("section", section)
         );
     }
 };
