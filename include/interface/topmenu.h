@@ -19,7 +19,10 @@ enum class ToolMode
 	SupportTv,
 	SupportTh,
 	PointLoadAdd,
-	PointLoadRem
+	PointLoadRem,
+	ShowNormal,
+	ShowShear,
+	ShowBending,
 };
 
 ToolMode toolMode = ToolMode::None;
@@ -40,6 +43,7 @@ public:
 	SectionManager* sectionManager;
 	int materials_current_idx = 0;
 	int sections_current_idx = 0;
+
 	
 
 	TopMenuWindow(MaterialManager* matMan, SectionManager* secMan) : materialManager(matMan), sectionManager(secMan) {}
@@ -150,7 +154,7 @@ public:
     		        }
 					if (ImGui::BeginTabItem("Carregamento"))
     		        {
-    		            titulo = "Concentrado em nó";
+    		            titulo = "Concentrado em Nó";
 						const char* caption1 = "Força em x:";
 						const char* caption2 = "Força em y:";
 						int captionSize1 = ImGui::CalcTextSize(caption1).x;
@@ -330,7 +334,59 @@ public:
 
     		        if (ImGui::BeginTabItem("Análise"))
     		        {
-    		        
+						titulo = "Esforço Normal";
+						Nbuttons = 2;
+						buttonWidth = 70;
+    		            ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
+    		            	if (ImGui::Button("Visualizar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
+								toolMode = ToolMode::ShowNormal;
+							}
+							ImGui::SameLine();
+							ImGui::VSliderFloat("##normalScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &normalScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							
+							
+							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
+                			ImGui::SetCursorPosX(cursorPosX);
+                			ImGui::Text(titulo);
+    		            ImGui::EndChild();
+
+    		            VerticalSeparator();
+
+						titulo = "Esforço Cortante";
+						Nbuttons = 2;
+						buttonWidth = 70;
+    		            ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
+    		            	if (ImGui::Button("Visualizar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
+								toolMode = ToolMode::ShowShear;
+							}
+							ImGui::SameLine();
+							ImGui::VSliderFloat("##shearScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &shearScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							
+							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
+                			ImGui::SetCursorPosX(cursorPosX);
+                			ImGui::Text(titulo);
+    		            ImGui::EndChild();
+
+    		            VerticalSeparator();
+
+						titulo = "Momento Fletor";
+						Nbuttons = 2;
+						buttonWidth = 70;
+    		            ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
+    		            	if (ImGui::Button("Visualizar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
+								toolMode = ToolMode::ShowBending;
+							}
+							ImGui::SameLine();
+							ImGui::VSliderFloat("##bendingScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &bendingScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							
+							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
+                			ImGui::SetCursorPosX(cursorPosX);
+                			ImGui::Text(titulo);
+    		            ImGui::EndChild();
+
+    		            VerticalSeparator();
+
+
     		            ImGui::EndTabItem();
     		        }
 
@@ -353,7 +409,7 @@ public:
 
 		lastToolMode = toolMode;
 
-		if (IsKeyDown(KEY_ESCAPE))
+		if (IsKeyDown(KEY_ESCAPE) && (toolMode != ToolMode::ShowNormal && toolMode != ToolMode::ShowShear && toolMode != ToolMode::ShowBending))
 			toolMode = ToolMode::None;
 
 			

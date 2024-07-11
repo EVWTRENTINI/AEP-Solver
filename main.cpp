@@ -23,6 +23,7 @@
 #include <cereal/types/vector.hpp>
 #include <cereal/archives/json.hpp>
 
+
 // My includes
 #include "interface/globals.h"
 #include "interface/utils.h"
@@ -37,6 +38,7 @@
 #include "interface/distanceinput.h"
 #include "interface/material.h"
 #include "interface/section.h"
+#include "structuralanalysis.h"
 
 
 
@@ -95,13 +97,17 @@ bool connectBeamToLastNode;
 TopMenuWindow* topMenu;
 MaterialManager* materialManager;
 SectionManager* sectionManager;
+bool isAnalysisUpToDate = false;
+
 
 	EditorWindow(TopMenuWindow* menu, MaterialManager* matMan, SectionManager* secMan) : topMenu(menu), materialManager(matMan), sectionManager(secMan) {}
 
-	void clear(){
+	void clear(ToolMode tool){
 		beamStart = nullptr;
 		beamEnd = nullptr;
-		toolMode = ToolMode::None;
+		ToolModeChanged = false;
+		isAnalysisUpToDate = false;
+		toolMode = tool;
 	}
 
 	bool AddNode(){
@@ -214,6 +220,13 @@ SectionManager* sectionManager;
 		}
 	}
 
+	void RunAnalysis(){
+		if (!isAnalysisUpToDate){
+			std::cout << "FAZ ANALISE!" << std::endl;
+			isAnalysisUpToDate = true;
+		}
+	}
+
 	void Setup() override
 	{
 
@@ -270,13 +283,13 @@ SectionManager* sectionManager;
 
 	void Update() override
 	{
+		std::cout << "Ver o que fazer quando troca de ferramenta sem passar o mouse sobre o editor" << std::endl;
 		mousePosition = GetMousePosition();
 		worldPosition = GetScreenToWorld2D(mousePosition, cameraController.camera);
 
 		drawCursorOnClosestNode = false;
 
-		if (!Open || !IsMouseOverRec(mousePosition, leftMenuSize, GetScreenWidth() - rightMenuSize, topPadding, GetScreenHeight() - bottomMenuSize))
-			return;
+
 
 		cameraController.UpdateCamera();
 
@@ -307,11 +320,8 @@ SectionManager* sectionManager;
 		nodeGuideManager.selectors.clear();
 
 
-
 		if (ToolModeChanged){
-			beamStart = nullptr;
-			beamEnd = nullptr;
-			ToolModeChanged = false;
+			clear(toolMode);
 		}
 		switch (toolMode) {
 		    case ToolMode::None:
@@ -361,6 +371,10 @@ SectionManager* sectionManager;
 				RemPointLoad();				
 				break;
 
+			case ToolMode::ShowNormal:
+				RunAnalysis();
+				break;
+
 
 			default:
 		        std::cout << "Modo desconhecido" << std::endl;
@@ -406,6 +420,8 @@ void loadEditor(EditorWindow& editor, const std::string& filename) {
     }
     cereal::JSONInputArchive archive(is);
     archive(cereal::make_nvp("editor", editor));
+	
+	editor.beamManager.UpdateBeams(); // IMPORTANTE!!!
 }
 
 
@@ -421,7 +437,7 @@ void DoMainMenu()
                 saveEditor(editor, "editor.json");
             }
             if (ImGui::MenuItem("Carregar")) {
-				editor.clear();
+				editor.clear(ToolMode::None);
                 loadEditor(editor, "editor.json");
             }
 			if (ImGui::MenuItem("Sair"))
@@ -443,7 +459,12 @@ void DoMainMenu()
 
 
 bool pauseEditor(){
-	return (editor.distanceInputWindow.isDistanceWindowOn || topMenu.isBeingInteracted);
+	bool isMouseOutOfEditor = (!IsMouseOverRec(GetMousePosition(), leftMenuSize, GetScreenWidth() - rightMenuSize, topPadding, GetScreenHeight() - bottomMenuSize));
+	bool pauseTheEditor = (editor.distanceInputWindow.isDistanceWindowOn || topMenu.isBeingInteracted || isMouseOutOfEditor);
+	if ((toolMode == ToolMode::ShowNormal || toolMode == ToolMode::ShowShear || toolMode == ToolMode::ShowShear) && !editor.isAnalysisUpToDate){
+		pauseTheEditor = false;
+	}
+	return (pauseTheEditor);
 }
 
 

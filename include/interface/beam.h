@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <limits>
+#include <Eigen/Dense>
 
 #include "interface/globals.h"
 #include "interface/node.h"
@@ -14,11 +15,25 @@ std::shared_ptr<Node> startNode;
 std::shared_ptr<Node> endNode;
 std::shared_ptr<BeamMaterial> material;
 std::shared_ptr<BeamSection> section;
+Eigen::Matrix2d r;
+float length;
+
 
 
 Beam() = default;
 
-Beam(std::shared_ptr<Node> start, std::shared_ptr<Node> end, std::shared_ptr<BeamMaterial> mat, std::shared_ptr<BeamSection> sec) : startNode(start), endNode(end), material(mat), section(sec) {}
+Beam(std::shared_ptr<Node> start, std::shared_ptr<Node> end, std::shared_ptr<BeamMaterial> mat, std::shared_ptr<BeamSection> sec) : startNode(start), endNode(end), material(mat), section(sec) {
+    UpdateBeam();
+}
+
+void UpdateBeam(){
+    Eigen::Vector2d direction(endNode->position.x - startNode->position.x, endNode->position.y - startNode->position.y);
+    length = direction.norm();
+    direction.normalize();
+    r << direction.x(), direction.y(),
+        -direction.y(), direction.x();
+    std::cout << r << std::endl;
+}
 
 void displayInfo() {
         std::cout << "A barra começa no nó: " << startNode->id << ", termina no nó: " << endNode->id  << " e é do material:"<< material->name << " Tem a seção:"<< section->name << std::endl;
@@ -106,6 +121,12 @@ void DrawShadows(Camera2D camera) const{
                            beam.endNode->position.y - (beam.endNode->position.y - yGround)*0.8f},
                         raioNo*1.4f/camera.zoom, Color{ 70, 70, 70, 255 });
 	    EndMode2D();
+    }
+}
+
+void UpdateBeams(){
+    for (Beam& beam : beams) {
+        beam.UpdateBeam();
     }
 }
 
