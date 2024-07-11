@@ -150,7 +150,7 @@ SectionManager* sectionManager;
 
 	void concludeNodeCreation(){
 		std::cout << "Nó final anotado e criando barra" << std::endl;
-		beamManager.AddBeam(beamStart, beamEnd, materialManager->materials[0]);
+		beamManager.AddBeam(beamStart, beamEnd, materialManager->materials[0], sectionManager->sections[0]);
     	beamStart = beamEnd;
     	beamEnd = nullptr;
 	}
@@ -531,4 +531,3 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
-// teste

@@ -8,10 +8,10 @@
                         "data": {
                             "id": 0,
                             "position": {
-                                "x": 16.5,
-                                "y": 24.5
+                                "x": 17.0,
+                                "y": 13.0
                             },
-                            "support": 5,
+                            "support": 0,
                             "load": {
                                 "force": {
                                     "x": 0.0,
@@ -27,185 +27,14 @@
                         "data": {
                             "id": 1,
                             "position": {
-                                "x": 16.5,
-                                "y": 21.5
+                                "x": 22.0,
+                                "y": 30.0
                             },
                             "support": 0,
                             "load": {
                                 "force": {
                                     "x": 0.0,
                                     "y": 0.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483651,
-                        "data": {
-                            "id": 2,
-                            "position": {
-                                "x": 21.5,
-                                "y": 21.5
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": 0.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483652,
-                        "data": {
-                            "id": 3,
-                            "position": {
-                                "x": 21.5,
-                                "y": 24.5
-                            },
-                            "support": 5,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": 0.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483653,
-                        "data": {
-                            "id": 4,
-                            "position": {
-                                "x": 16.5,
-                                "y": 20.0
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": -0.800000011920929
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483654,
-                        "data": {
-                            "id": 5,
-                            "position": {
-                                "x": 21.5,
-                                "y": 20.0
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": -0.800000011920929
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483655,
-                        "data": {
-                            "id": 6,
-                            "position": {
-                                "x": 20.0,
-                                "y": 20.0
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": -1.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483656,
-                        "data": {
-                            "id": 7,
-                            "position": {
-                                "x": 20.0,
-                                "y": 21.5
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": 0.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483657,
-                        "data": {
-                            "id": 8,
-                            "position": {
-                                "x": 19.0,
-                                "y": 20.0
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": -0.800000011920929
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483658,
-                        "data": {
-                            "id": 9,
-                            "position": {
-                                "x": 18.0,
-                                "y": 21.5
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": 0.0
-                                }
-                            }
-                        }
-                    }
-                },
-                {
-                    "ptr_wrapper": {
-                        "id": 2147483659,
-                        "data": {
-                            "id": 10,
-                            "position": {
-                                "x": 18.0,
-                                "y": 20.0
-                            },
-                            "support": 0,
-                            "load": {
-                                "force": {
-                                    "x": 0.0,
-                                    "y": -1.0
                                 }
                             }
                         }
@@ -217,7 +46,7 @@
             "materials": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483660,
+                        "id": 2147483651,
                         "data": {
                             "name": "Padrão",
                             "E": 2500000000.0,
@@ -227,7 +56,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483661,
+                        "id": 2147483652,
                         "data": {
                             "name": "Concreto C20",
                             "E": 2500000000.0,
@@ -237,7 +66,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483662,
+                        "id": 2147483653,
                         "data": {
                             "name": "Aço",
                             "E": 199999995904.0,
@@ -251,7 +80,7 @@
             "sections": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483663,
+                        "id": 2147483654,
                         "data": {
                             "name": "Padrão",
                             "area": 0.05999999865889549,
@@ -261,7 +90,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483664,
+                        "id": 2147483655,
                         "data": {
                             "name": "Retangular 20x40",
                             "area": 0.05999999865889549,
@@ -271,7 +100,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483665,
+                        "id": 2147483656,
                         "data": {
                             "name": "Circular d30",
                             "area": 0.07068579643964768,
@@ -294,196 +123,14 @@
                             "id": 2
                         }
                     },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 4
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "endNode": {
+                    "section": {
                         "ptr_wrapper": {
                             "id": 6
                         }
                     },
                     "material": {
                         "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 6
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
                             "id": 3
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 7
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 7
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 9
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 9
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 10
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 10
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 11
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 11
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 12
                         }
                     }
                 }
@@ -492,17 +139,17 @@
         "cameraController": {
             "camera": {
                 "offset": {
-                    "x": 1181.0,
-                    "y": 777.0
+                    "x": 0.0,
+                    "y": 0.0
                 },
                 "target": {
-                    "x": 18.603355407714845,
-                    "y": 22.55000877380371
+                    "x": 0.0,
+                    "y": 0.0
                 },
                 "rotation": 0.0,
-                "zoom": 135.52542114257813
+                "zoom": 20.0
             },
-            "bZoom": 135.52532958984376
+            "bZoom": 20.0
         }
     }
 }
