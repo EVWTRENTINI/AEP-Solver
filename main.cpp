@@ -66,6 +66,8 @@ bool Quit = false;
 
 bool ImGuiDemoOpen = false;
 
+
+
 MaterialManager materialManager;
 SectionManager sectionManager;
 
@@ -97,7 +99,7 @@ bool connectBeamToLastNode;
 TopMenuWindow* topMenu;
 MaterialManager* materialManager;
 SectionManager* sectionManager;
-bool isAnalysisUpToDate = false;
+
 
 
 	EditorWindow(TopMenuWindow* menu, MaterialManager* matMan, SectionManager* secMan) : topMenu(menu), materialManager(matMan), sectionManager(secMan) {}
@@ -223,6 +225,7 @@ bool isAnalysisUpToDate = false;
 	void RunAnalysis(){
 		if (!isAnalysisUpToDate){
 			std::cout << "FAZ ANALISE!" << std::endl;
+			StructuralAnalysis analysis(nodeManager.nodes, beamManager.beams);
 			isAnalysisUpToDate = true;
 		}
 	}
@@ -283,7 +286,6 @@ bool isAnalysisUpToDate = false;
 
 	void Update() override
 	{
-		std::cout << "Ver o que fazer quando troca de ferramenta sem passar o mouse sobre o editor" << std::endl;
 		mousePosition = GetMousePosition();
 		worldPosition = GetScreenToWorld2D(mousePosition, cameraController.camera);
 
@@ -375,6 +377,14 @@ bool isAnalysisUpToDate = false;
 				RunAnalysis();
 				break;
 
+			case ToolMode::ShowShear:
+				RunAnalysis();
+				break;
+
+			case ToolMode::ShowBending:
+				RunAnalysis();
+				break;
+
 
 			default:
 		        std::cout << "Modo desconhecido" << std::endl;
@@ -461,7 +471,7 @@ void DoMainMenu()
 bool pauseEditor(){
 	bool isMouseOutOfEditor = (!IsMouseOverRec(GetMousePosition(), leftMenuSize, GetScreenWidth() - rightMenuSize, topPadding, GetScreenHeight() - bottomMenuSize));
 	bool pauseTheEditor = (editor.distanceInputWindow.isDistanceWindowOn || topMenu.isBeingInteracted || isMouseOutOfEditor);
-	if ((toolMode == ToolMode::ShowNormal || toolMode == ToolMode::ShowShear || toolMode == ToolMode::ShowShear) && !editor.isAnalysisUpToDate){
+	if ((toolMode == ToolMode::ShowNormal || toolMode == ToolMode::ShowShear || toolMode == ToolMode::ShowBending) && !isAnalysisUpToDate){
 		pauseTheEditor = false;
 	}
 	return (pauseTheEditor);

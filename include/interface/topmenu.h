@@ -27,6 +27,7 @@ enum class ToolMode
 
 ToolMode toolMode = ToolMode::None;
 bool ToolModeChanged = false;
+bool isAnalysisUpToDate = false;
 
 class TopMenuWindow : public DocumentWindow
 {
@@ -200,7 +201,7 @@ public:
 						Nbuttons = 1;
 						buttonWidth = 70;
     		            ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
-    		            	ImGui::VSliderFloat("##v", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &loadScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+    		            	ImGui::VSliderFloat("##v", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &loadScale, 0.0f, 100.0f, "%.1f\npixels");
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
                 			ImGui::Text(titulo);
@@ -342,7 +343,7 @@ public:
 								toolMode = ToolMode::ShowNormal;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##normalScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &normalScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							ImGui::VSliderFloat("##normalScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &normalScale, 0.0f, 100.0f, "%.1f\npixels");
 							
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
@@ -360,7 +361,7 @@ public:
 								toolMode = ToolMode::ShowShear;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##shearScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &shearScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							ImGui::VSliderFloat("##shearScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &shearScale, 0.0f, 100.0f, "%.1f\npixels");
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
@@ -377,7 +378,7 @@ public:
 								toolMode = ToolMode::ShowBending;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##bendingScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &bendingScale, 0.0f, 100.0f, "%.1f\npx/\nforça");
+							ImGui::VSliderFloat("##bendingScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &bendingScale, 0.0f, 100.0f, "%.1f\npixels");
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
@@ -398,8 +399,11 @@ public:
     		}
 		ImGui::End();
 		
-		if (!ToolModeChanged)
+		if (!ToolModeChanged){
 			ToolModeChanged = !(lastToolMode == toolMode);
+		}else{
+			isAnalysisUpToDate = false;
+		}
 	}
 
 	void Update() override

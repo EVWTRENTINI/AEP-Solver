@@ -1,6 +1,8 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
+#include "Eigen/Dense"
+#include "Eigen/Sparse"
 
 class DocumentWindow
 {
@@ -131,3 +133,20 @@ void drawSelector(Vector2 center, Camera2D camera, Color color){
 	DrawTriangle(v1, v5, v6, color); 
 	EndMode2D();
 };
+
+
+void zeroRow(Eigen::SparseMatrix<double>& matrix, int rowToZero) {
+    for (int j = 0; j < matrix.cols(); ++j) {
+        if (matrix.coeff(rowToZero, j) != 0.0) {
+            matrix.coeffRef(rowToZero, j) = 0.0;
+        }
+    }
+}
+
+void zeroColumn(Eigen::SparseMatrix<double>& matrix, int colToZero) {
+    for (int i = 0; i < matrix.rows(); ++i) {
+        if (matrix.coeff(i, colToZero) != 0.0) {
+            matrix.coeffRef(i, colToZero) = 0.0;  // Definir o elemento como zero
+        }
+    }
+}
