@@ -85,7 +85,8 @@
 			"variant": "cpp",
 			"sparse": "cpp",
 			"dense": "cpp",
-			"core": "cpp"
+			"core": "cpp",
+			"sparselu": "cpp"
 		}
 	}
 }

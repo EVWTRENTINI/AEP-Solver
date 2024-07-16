@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <limits>
-#include <Eigen/Dense>
+#include "eigenpch.h"
 
 #include "interface/globals.h"
 #include "interface/node.h"

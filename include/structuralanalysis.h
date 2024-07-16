@@ -8,8 +8,7 @@
 #include "interface/node.h"
 
 // Eigen
-#include "Eigen/Dense"
-#include "Eigen/Sparse"
+#include "eigenpch.h"
 
 
 class StructuralAnalysis{
@@ -38,7 +37,6 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
     for (size_t n = 0; n < nodes.size(); ++n) {
         nodeId[nodes[n]] = n;
     }
-
     
     
     bcn.resize(beams.size(), gln*2);
@@ -119,12 +117,13 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
     }
 
 
-
     for (size_t n = 0; n < nodes.size(); ++n) {
-        // PREENCHER COM OS VALORES DOS CARREGAMENTOS NODAIS
+        P.coeffRef(n*gln) = nodes[n]->load.force.x;   //Força em x aplicado em nó
+        P.coeffRef(n*gln+1) = nodes[n]->load.force.y; // Força em y aplicado em nó
+        //P.coeffRef(n*gln+2) = ; // Momento aplicado em nó
     }
 
-    // Adiciona apoios - FALTA ADICIONAR A PARTE DO CARREGAMENETO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     for (size_t n = 0; n < nodes.size(); ++n) {
          switch (nodes[n]->support) {
 		    case Support::None:
@@ -134,12 +133,16 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
                 zeroRow(S, n*gln);
                 zeroColumn(S, n*gln);
                 S.coeffRef(n*gln, n*gln) = 1;
+
+                P.coeffRef(n*gln) = 0;   //Força em x aplicado em nó
                 break;
 
             case Support::Ly:
                 zeroRow(S, n*gln + 1);
                 zeroColumn(S, n*gln + 1);
                 S.coeffRef(n*gln + 1, n*gln + 1) = 1;
+
+                P.coeffRef(n*gln+1) = 0; // Força em y aplicado em nó
                 break;
 
             case Support::Lxy:
@@ -150,6 +153,9 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
                 zeroRow(S, n*gln + 1);
                 zeroColumn(S, n*gln + 1);
                 S.coeffRef(n*gln + 1, n*gln + 1) = 1;
+
+                P.coeffRef(n*gln) = 0;   //Força em x aplicado em nó
+                P.coeffRef(n*gln+1) = 0; // Força em y aplicado em nó
                 break;
 
             case Support::Th:
@@ -164,6 +170,10 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
                 zeroRow(S, n*gln + 2);
                 zeroColumn(S, n*gln + 2);
                 S.coeffRef(n*gln + 2, n*gln + 2) = 1;
+
+                P.coeffRef(n*gln) = 0;   //Força em x aplicado em nó
+                P.coeffRef(n*gln+1) = 0; // Força em y aplicado em nó
+                P.coeffRef(n*gln+2) = 0; // Momento aplicado em nó
                 break;
 
             case Support::Tv:
@@ -178,13 +188,49 @@ StructuralAnalysis(const std::vector<std::shared_ptr<Node>>& nodes, const std::v
                 zeroRow(S, n*gln + 2);
                 zeroColumn(S, n*gln + 2);
                 S.coeffRef(n*gln + 2, n*gln + 2) = 1;
+
+                P.coeffRef(n*gln) = 0;   //Força em x aplicado em nó
+                P.coeffRef(n*gln+1) = 0; // Força em y aplicado em nó
+                P.coeffRef(n*gln+2) = 0; // Momento aplicado em nó
                 break;
 
 			default:
 		        std::cout << "Apoio desconhecido" << std::endl;
 		        break;
 		}
+
+
+
     }
+
+    
+    /*// IMPOSSÍVEL USAR ISSO, O TEMPO DE COMPILAÇÃO FICA 3 MINUTOS MAIOR!
+    // Cria um solucionador de autovalores para matrizes não-simétricas
+    Eigen::MatrixXd denseS = Eigen::MatrixXd(S);
+    Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> eigensolver(denseS);
+
+    // Autovalores
+    std::cout << "Autovalores:\n" << eigensolver.eigenvalues() << std::endl;
+    // Autovetores
+    std::cout << "Autovetores:\n" << eigensolver.eigenvectors() << std::endl;*/
+    
+
+    Eigen::SparseLU<Eigen::SparseMatrix<double>> solver;
+    solver.analyzePattern(S);
+    solver.factorize(S);
+    if (solver.info() != Eigen::Success) {
+        if (solver.info() == Eigen::NumericalIssue) {
+        std::cerr << "Problema numérico detectado." << std::endl;
+    } else if (solver.info() == Eigen::NoConvergence) {
+        std::cerr << "O solver não convergiu." << std::endl;
+    } else if (solver.info() == Eigen::InvalidInput) {
+        std::cerr << "Entrada inválida para o solver." << std::endl;
+    }
+        return;
+    }
+
+    Eigen::VectorXd d = solver.solve(P);
+    std::cout << "Deslocamentos (d):\n" << d << std::endl;
 }
 
 };

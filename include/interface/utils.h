@@ -1,8 +1,7 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
-#include "Eigen/Dense"
-#include "Eigen/Sparse"
+#include "eigenpch.h"
 
 class DocumentWindow
 {
