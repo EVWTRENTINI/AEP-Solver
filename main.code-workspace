@@ -86,7 +86,8 @@
 			"sparse": "cpp",
 			"dense": "cpp",
 			"core": "cpp",
-			"sparselu": "cpp"
+			"sparselu": "cpp",
+			"*.inc": "cpp"
 		}
 	}
 }

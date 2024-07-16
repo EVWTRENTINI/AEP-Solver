@@ -149,3 +149,40 @@ void zeroColumn(Eigen::SparseMatrix<double>& matrix, int colToZero) {
         }
     }
 }
+
+void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, float arrowLength, float arrowWidth, float lineWidth, Color color){
+    Vector2 endPosition;
+    Vector2 p1;
+    Vector2 p2;
+    Vector2 p3;
+    float angle = atan2(size.y, size.x);
+
+
+    if (inward) {
+        endPosition = {position.x - size.x, position.y - size.y};
+        p1 = {position.x, position.y};
+        p2 = {position.x - arrowLength, position.y - arrowWidth};
+        p3 = {position.x - arrowLength, position.y + arrowWidth};
+
+        p2 = RotatePoint(p1, p2, angle);
+        p3 = RotatePoint(p1, p3, angle);
+    }else{
+        endPosition = {position.x + size.x, position.y + size.y};
+        p1 = {position.x, position.y};
+        p2 = {position.x - arrowLength, position.y - arrowWidth};
+        p3 = {position.x - arrowLength, position.y + arrowWidth};
+
+        p2 = RotatePoint(p1, p2, angle);
+        p3 = RotatePoint(p1, p3, angle);
+
+        p1 = Vector2Add(p1, size);
+        p2 = Vector2Add(p2, size);
+        p3 = Vector2Add(p3, size);
+    }
+    
+    BeginMode2D(camera);  
+    DrawLineEx(endPosition, position, lineWidth, color);
+    DrawTriangle(p1, p2, p3, color);
+    DrawTriangle(p3, p2, p1, color);
+    EndMode2D();
+}

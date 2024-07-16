@@ -34,10 +34,9 @@ PointLoad(Vector2 f) : force(f) {};
 
 void Draw(Vector2 position, Camera2D camera) const override{
     if (force.x != 0 || force.y != 0){
-        // Calcula a posição final baseada no deslocamento e na escala
+        drawArrow(position, Vector2{force.x * loadScale / camera.zoom, -force.y * loadScale / camera.zoom}, camera, false, raioNo * 2 / camera.zoom, raioNo / 1 / camera.zoom, raioNo * 0.5f / camera.zoom, RED);
+        /*// Calcula a posição final baseada no deslocamento e na escala
         Vector2 endPosition = {position.x - force.x * loadScale / camera.zoom, position.y + force.y * loadScale / camera.zoom};
-
-        // Desenha a linha do ponto final de volta ao ponto inicial
         
 
         // Ângulo de rotação da seta em relação ao eixo horizontal
@@ -60,8 +59,12 @@ void Draw(Vector2 position, Camera2D camera) const override{
         DrawTriangle(p1, p2, p3, RED);
         DrawTriangle(p3, p2, p1, RED);
         EndMode2D();
+        */
     }
 }
+
+
+
 
 template<class Archive>
 void serialize(Archive& ar) {

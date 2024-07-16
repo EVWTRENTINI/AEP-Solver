@@ -449,6 +449,7 @@ void DoMainMenu()
             if (ImGui::MenuItem("Carregar")) {
 				editor.clear(ToolMode::None);
                 loadEditor(editor, "editor.json");
+				isAnalysisUpToDate = false;
             }
 			if (ImGui::MenuItem("Sair"))
 				Quit = true;
