@@ -32,7 +32,6 @@ void UpdateBeam(){
     direction.normalize();
     r << direction.x(), direction.y(),
         -direction.y(), direction.x();
-    std::cout << r << std::endl;
 }
 
 void displayInfo() {

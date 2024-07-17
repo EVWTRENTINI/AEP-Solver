@@ -99,6 +99,7 @@ bool connectBeamToLastNode;
 TopMenuWindow* topMenu;
 MaterialManager* materialManager;
 SectionManager* sectionManager;
+StructuralAnalysis analysis;
 
 
 
@@ -225,7 +226,7 @@ SectionManager* sectionManager;
 	void RunAnalysis(){
 		if (!isAnalysisUpToDate){
 			std::cout << "FAZ ANALISE!" << std::endl;
-			StructuralAnalysis analysis(nodeManager.nodes, beamManager.beams);
+			analysis.Run(&nodeManager.nodes, &beamManager.beams);
 			isAnalysisUpToDate = true;
 		}
 	}
@@ -281,7 +282,9 @@ SectionManager* sectionManager;
     	DrawText(positionText.c_str(), GetScreenWidth() - textWidth - 10, GetScreenHeight() - 30, 20, WHITE);
 		
 
-		
+		if (isAnalysisUpToDate){
+			analysis.DrawReactions(cameraController.camera);
+		}
 	}
 
 	void Update() override
@@ -479,6 +482,7 @@ bool pauseEditor(){
 }
 
 
+
 int main(int argc, char* argv[])
 {
 	// Initialization
@@ -497,6 +501,7 @@ int main(int argc, char* argv[])
     ImGui::StyleColorsLight();
 
     ImFont* font = ImGui::GetIO().Fonts->AddFontFromFileTTF("resources/segoeuisl.ttf", 18);
+	fontTtf = LoadFontEx("resources/consola.ttf", fontsize, 0, 250);
 
     rlImGuiEndInitImGui();
 
@@ -511,12 +516,14 @@ int main(int argc, char* argv[])
 	editor.Open = true;
 
 	
+
 	// Main game loop
 	while (!WindowShouldClose() && !Quit)    // Detect window close button or ESC key
 	{
 		BeginDrawing();
 		ClearBackground(DARKGRAY);
 		DrawFPS(leftMenuSize, topPadding);
+		
 		
 		/*════════════════════════ UPDATE ════════════════════════*/
 		topMenu.Update();

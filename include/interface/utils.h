@@ -1,7 +1,9 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
+#include <cstdio>
 #include "eigenpch.h"
+#include "interface/globals.h"
 
 class DocumentWindow
 {
@@ -150,11 +152,21 @@ void zeroColumn(Eigen::SparseMatrix<double>& matrix, int colToZero) {
     }
 }
 
+
+
 void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, float arrowLength, float arrowWidth, float lineWidth, Color color){
+    float module = Vector2Length(size);
+    float sizeInPx = module * camera.zoom;
+
+    if (sizeInPx < arrowLength * camera.zoom)
+        return;
+    
+    size = Vector2{size.x, -size.y}; // Inverte por que o raylib desenha positivo para baixo
     Vector2 endPosition;
     Vector2 p1;
     Vector2 p2;
-    Vector2 p3;
+    Vector2 p3; 
+
     float angle = atan2(size.y, size.x);
 
 
@@ -180,9 +192,20 @@ void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, flo
         p3 = Vector2Add(p3, size);
     }
     
+
     BeginMode2D(camera);  
     DrawLineEx(endPosition, position, lineWidth, color);
     DrawTriangle(p1, p2, p3, color);
     DrawTriangle(p3, p2, p1, color);
     EndMode2D();
+
+    int intOffset = 30;
+    if (inward)
+        intOffset = - intOffset;
+    Vector2 offset = Vector2Scale(Vector2Normalize(size), intOffset / camera.zoom);
+    Vector2 textPosition = Vector2{endPosition.x + offset.x, endPosition.y + offset.y};
+    char msg[256];
+    snprintf(msg, sizeof(msg), "%.1f", module);
+	DrawTextEx(fontTtf, msg, GetWorldToScreen2D(textPosition, camera), (float)fontTtf.baseSize, 2, color);
+
 }

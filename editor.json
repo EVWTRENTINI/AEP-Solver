@@ -8,10 +8,10 @@
                         "data": {
                             "id": 0,
                             "position": {
-                                "x": 18.0,
-                                "y": 19.0
+                                "x": 21.0,
+                                "y": 23.0
                             },
-                            "support": 0,
+                            "support": 3,
                             "load": {
                                 "force": {
                                     "x": 0.0,
@@ -27,14 +27,14 @@
                         "data": {
                             "id": 1,
                             "position": {
-                                "x": 42.0,
-                                "y": 19.0
+                                "x": 30.0,
+                                "y": 15.0
                             },
-                            "support": 0,
+                            "support": 3,
                             "load": {
                                 "force": {
                                     "x": 0.0,
-                                    "y": 0.0
+                                    "y": 1.0
                                 }
                             }
                         }
@@ -46,10 +46,10 @@
                         "data": {
                             "id": 2,
                             "position": {
-                                "x": 24.0,
-                                "y": 10.0
+                                "x": 42.0,
+                                "y": 23.0
                             },
-                            "support": 0,
+                            "support": 2,
                             "load": {
                                 "force": {
                                     "x": 0.0,
@@ -65,14 +65,14 @@
                         "data": {
                             "id": 3,
                             "position": {
-                                "x": 23.0,
-                                "y": 27.0
+                                "x": 53.0,
+                                "y": 15.0
                             },
                             "support": 0,
                             "load": {
                                 "force": {
-                                    "x": 0.0,
-                                    "y": 0.0
+                                    "x": 1.0,
+                                    "y": -10.0
                                 }
                             }
                         }
@@ -202,7 +202,51 @@
                     },
                     "endNode": {
                         "ptr_wrapper": {
+                            "id": 1
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
                             "id": 4
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 2
                         }
                     },
                     "material": {
@@ -221,17 +265,17 @@
         "cameraController": {
             "camera": {
                 "offset": {
-                    "x": 0.0,
-                    "y": 0.0
+                    "x": 790.0,
+                    "y": 505.0
                 },
                 "target": {
-                    "x": 0.0,
-                    "y": 0.0
+                    "x": 28.79452133178711,
+                    "y": 13.301122665405274
                 },
                 "rotation": 0.0,
-                "zoom": 20.0
+                "zoom": 16.00001335144043
             },
-            "bZoom": 20.0
+            "bZoom": 16.000003814697267
         }
     }
 }
