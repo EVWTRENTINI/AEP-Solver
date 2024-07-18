@@ -6,15 +6,15 @@
                     "ptr_wrapper": {
                         "id": 2147483649,
                         "data": {
-                            "id": 0,
+                            "id": 4,
                             "position": {
-                                "x": 21.0,
-                                "y": 23.0
+                                "x": 5.465000152587891,
+                                "y": 5.515000343322754
                             },
-                            "support": 3,
+                            "support": 0,
                             "load": {
                                 "force": {
-                                    "x": 0.0,
+                                    "x": 1.0,
                                     "y": 0.0
                                 }
                             }
@@ -25,12 +25,31 @@
                     "ptr_wrapper": {
                         "id": 2147483650,
                         "data": {
-                            "id": 1,
+                            "id": 5,
                             "position": {
-                                "x": 30.0,
-                                "y": 15.0
+                                "x": 5.466000080108643,
+                                "y": 5.515000343322754
                             },
-                            "support": 3,
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 1.0,
+                                    "y": 1.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483651,
+                        "data": {
+                            "id": 6,
+                            "position": {
+                                "x": 5.467000484466553,
+                                "y": 5.515000343322754
+                            },
+                            "support": 0,
                             "load": {
                                 "force": {
                                     "x": 0.0,
@@ -42,17 +61,36 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483651,
+                        "id": 2147483652,
                         "data": {
-                            "id": 2,
+                            "id": 7,
                             "position": {
-                                "x": 42.0,
-                                "y": 23.0
+                                "x": 5.468000411987305,
+                                "y": 5.515000343322754
                             },
-                            "support": 2,
+                            "support": 0,
                             "load": {
                                 "force": {
-                                    "x": 0.0,
+                                    "x": -1.0,
+                                    "y": 1.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483653,
+                        "data": {
+                            "id": 8,
+                            "position": {
+                                "x": 5.469000339508057,
+                                "y": 5.515000343322754
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": -1.0,
                                     "y": 0.0
                                 }
                             }
@@ -61,18 +99,56 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483652,
+                        "id": 2147483654,
                         "data": {
-                            "id": 3,
+                            "id": 9,
                             "position": {
-                                "x": 53.0,
-                                "y": 15.0
+                                "x": 5.470000267028809,
+                                "y": 5.515000343322754
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": -1.0,
+                                    "y": -1.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483655,
+                        "data": {
+                            "id": 10,
+                            "position": {
+                                "x": 5.4710001945495609,
+                                "y": 5.515000343322754
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": -1.0
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483656,
+                        "data": {
+                            "id": 11,
+                            "position": {
+                                "x": 5.4720001220703129,
+                                "y": 5.515000343322754
                             },
                             "support": 0,
                             "load": {
                                 "force": {
                                     "x": 1.0,
-                                    "y": -10.0
+                                    "y": -1.0
                                 }
                             }
                         }
@@ -84,7 +160,7 @@
             "materials": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483653,
+                        "id": 2147483657,
                         "data": {
                             "name": "Padrão",
                             "E": 2500000000.0,
@@ -94,7 +170,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483654,
+                        "id": 2147483658,
                         "data": {
                             "name": "Concreto C20",
                             "E": 2500000000.0,
@@ -104,7 +180,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483655,
+                        "id": 2147483659,
                         "data": {
                             "name": "Aço",
                             "E": 199999995904.0,
@@ -118,7 +194,7 @@
             "sections": [
                 {
                     "ptr_wrapper": {
-                        "id": 2147483656,
+                        "id": 2147483660,
                         "data": {
                             "name": "Padrão",
                             "area": 0.05999999865889549,
@@ -128,7 +204,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483657,
+                        "id": 2147483661,
                         "data": {
                             "name": "Retangular 20x40",
                             "area": 0.05999999865889549,
@@ -138,7 +214,7 @@
                 },
                 {
                     "ptr_wrapper": {
-                        "id": 2147483658,
+                        "id": 2147483662,
                         "data": {
                             "name": "Circular d30",
                             "area": 0.07068579643964768,
@@ -149,133 +225,22 @@
             ]
         },
         "beamManager": {
-            "beams": [
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 1
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "section": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "section": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 1
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "section": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 3
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 4
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "section": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    }
-                },
-                {
-                    "startNode": {
-                        "ptr_wrapper": {
-                            "id": 4
-                        }
-                    },
-                    "endNode": {
-                        "ptr_wrapper": {
-                            "id": 2
-                        }
-                    },
-                    "material": {
-                        "ptr_wrapper": {
-                            "id": 5
-                        }
-                    },
-                    "section": {
-                        "ptr_wrapper": {
-                            "id": 8
-                        }
-                    }
-                }
-            ]
+            "beams": []
         },
         "cameraController": {
             "camera": {
                 "offset": {
-                    "x": 790.0,
-                    "y": 505.0
+                    "x": 657.0,
+                    "y": 413.0
                 },
                 "target": {
-                    "x": 28.79452133178711,
-                    "y": 13.301122665405274
+                    "x": 4.9522175788879398,
+                    "y": 5.459571838378906
                 },
                 "rotation": 0.0,
-                "zoom": 16.00001335144043
+                "zoom": 241.7855224609375
             },
-            "bZoom": 16.000003814697267
+            "bZoom": 241.78561401367188
         }
     }
 }

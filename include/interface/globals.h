@@ -18,5 +18,5 @@ int rightMenuSize = 0;
 int bottomMenuSize = 0;
 int topPadding = mainMenuSize + topMenuSize;
 
-int fontsize = 24;
+int myFontSize = 24;
 Font fontTtf;

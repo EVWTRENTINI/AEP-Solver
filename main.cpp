@@ -501,7 +501,8 @@ int main(int argc, char* argv[])
     ImGui::StyleColorsLight();
 
     ImFont* font = ImGui::GetIO().Fonts->AddFontFromFileTTF("resources/segoeuisl.ttf", 18);
-	fontTtf = LoadFontEx("resources/consola.ttf", fontsize, 0, 250);
+	fontTtf = LoadFontEx("resources/seguisb.ttf", myFontSize, 0, 250);
+	//fontTtf = LoadFontEx("resources/consola.ttf", fontsize, 0, 250);
 
     rlImGuiEndInitImGui();
 

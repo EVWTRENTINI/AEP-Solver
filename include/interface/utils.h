@@ -1,9 +1,11 @@
 #pragma once
 #include <raylib.h>
 #include <raymath.h>
+#include <cstring>
 #include <cstdio>
 #include "eigenpch.h"
 #include "interface/globals.h"
+
 
 class DocumentWindow
 {
@@ -152,26 +154,38 @@ void zeroColumn(Eigen::SparseMatrix<double>& matrix, int colToZero) {
     }
 }
 
+Vector2 FindIntersection(Vector2 rectSize, Vector2 size) {
+    if (size.x == 0){
+        return {0, std::copysign(rectSize.y / 2, size.y)};
+    } else if (size.y == 0) { 
+        return {std::copysign(rectSize.x / 2, size.x), 0};
+        
+    }
 
+    float intersectionY = rectSize.x / 2 * fabs(size.y) / fabs(size.x);
+    float intersectionLimitY = rectSize.y / 2;
 
-void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, float arrowLength, float arrowWidth, float lineWidth, Color color){
-    float module = Vector2Length(size);
-    float sizeInPx = module * camera.zoom;
+    if (intersectionY < intersectionLimitY){
+        return {std::copysign(rectSize.x/2, size.x), std::copysign(intersectionY, size.y)};
+    } else if (intersectionY > intersectionLimitY){
+        return {std::copysign((rectSize.y/2) / (fabs(size.y) / fabs(size.x)), size.x), std::copysign(rectSize.y / 2, size.y)};
+    }else{
+        return {std::copysign(rectSize.x / 2, size.x), std::copysign(rectSize.y / 2, size.y)};
+    }
+}
 
-    if (sizeInPx < arrowLength * camera.zoom)
-        return;
-    
-    size = Vector2{size.x, -size.y}; // Inverte por que o raylib desenha positivo para baixo
+void drawArrow(Vector2 position, Vector2 size, bool inward, float arrowLength, float arrowWidth, float lineWidth, Color color, Camera2D camera, const char* annotation = ""){ 
+    Vector2 sizeFliped = Vector2{size.x, -size.y}; // Inverte por que o raylib desenha positivo para baixo
     Vector2 endPosition;
     Vector2 p1;
     Vector2 p2;
     Vector2 p3; 
 
-    float angle = atan2(size.y, size.x);
+    float angle = atan2(sizeFliped.y, sizeFliped.x);
 
 
     if (inward) {
-        endPosition = {position.x - size.x, position.y - size.y};
+        endPosition = {position.x - sizeFliped.x, position.y - sizeFliped.y};
         p1 = {position.x, position.y};
         p2 = {position.x - arrowLength, position.y - arrowWidth};
         p3 = {position.x - arrowLength, position.y + arrowWidth};
@@ -179,7 +193,7 @@ void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, flo
         p2 = RotatePoint(p1, p2, angle);
         p3 = RotatePoint(p1, p3, angle);
     }else{
-        endPosition = {position.x + size.x, position.y + size.y};
+        endPosition = {position.x + sizeFliped.x, position.y + sizeFliped.y};
         p1 = {position.x, position.y};
         p2 = {position.x - arrowLength, position.y - arrowWidth};
         p3 = {position.x - arrowLength, position.y + arrowWidth};
@@ -187,9 +201,9 @@ void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, flo
         p2 = RotatePoint(p1, p2, angle);
         p3 = RotatePoint(p1, p3, angle);
 
-        p1 = Vector2Add(p1, size);
-        p2 = Vector2Add(p2, size);
-        p3 = Vector2Add(p3, size);
+        p1 = Vector2Add(p1, sizeFliped);
+        p2 = Vector2Add(p2, sizeFliped);
+        p3 = Vector2Add(p3, sizeFliped);
     }
     
 
@@ -199,13 +213,37 @@ void drawArrow(Vector2 position, Vector2 size, Camera2D camera, bool inward, flo
     DrawTriangle(p3, p2, p1, color);
     EndMode2D();
 
-    int intOffset = 30;
-    if (inward)
-        intOffset = - intOffset;
-    Vector2 offset = Vector2Scale(Vector2Normalize(size), intOffset / camera.zoom);
-    Vector2 textPosition = Vector2{endPosition.x + offset.x, endPosition.y + offset.y};
-    char msg[256];
-    snprintf(msg, sizeof(msg), "%.1f", module);
-	DrawTextEx(fontTtf, msg, GetWorldToScreen2D(textPosition, camera), (float)fontTtf.baseSize, 2, color);
+
+    if (strcmp(annotation, "") != 0) {
+        int intOffset = 3;
+        if (inward)
+            intOffset = - intOffset;
+        Vector2 offset = Vector2Scale(Vector2Normalize(sizeFliped), intOffset / camera.zoom);
+        Vector2 textSizeOri = MeasureTextEx(fontTtf, annotation, myFontSize, 1);
+        Vector2 textSize = Vector2{textSizeOri.x, textSizeOri.y * .6f};
+        Vector2 textPositionWorld = Vector2{endPosition.x + offset.x, endPosition.y + offset.y};
+        Vector2 textPosition = Vector2Subtract(GetWorldToScreen2D(textPositionWorld, camera), Vector2Scale(textSize, .5f));
+        Vector2 textCenterOffset = FindIntersection(textSize, size);
+        textPosition = Vector2{textPosition.x + textCenterOffset.x, textPosition.y - textCenterOffset.y};
+        //DrawRectangleLines(textPosition.x, textPosition.y, textSize.x, textSize.y, YELLOW);
+	    DrawTextEx(fontTtf, annotation, Vector2{textPosition.x, textPosition.y - (textSizeOri.y - textSize.y)/2 - textSizeOri.y*.07f}, myFontSize, 1, color);
+
+    }
+}
+
+void drawFixedSizeAnnotadedArrow(Vector2 position, Vector2 size, float scale, bool inward, float arrowLength, float arrowWidth, float lineWidth, Color color, Camera2D cam){
+float module = Vector2Length(size);
+float sizeInPx = module * scale;
+if (sizeInPx < arrowLength)
+    return;
+
+
+char annotation[256];
+snprintf(annotation, sizeof(annotation), "%.2f", module);
+
+
+drawArrow(position, Vector2Scale(size, scale * 1 / cam.zoom), inward, arrowLength / cam.zoom, arrowWidth / cam.zoom, lineWidth / cam.zoom, color, cam, annotation);
+
+
 
 }

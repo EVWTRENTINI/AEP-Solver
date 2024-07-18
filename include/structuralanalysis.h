@@ -295,15 +295,10 @@ void Run(std::vector<std::shared_ptr<Node>>* newNodes, std::vector<Beam>* newBea
 void DrawReactions(Camera2D cam){
     for (size_t n = 0; n < nodes->size(); ++n) {
         float Rx = static_cast<float>(R(n * gln));
-        float Rx_px = Rx * loadScale;
-        drawArrow((*nodes)[n]->position, Vector2{Rx_px / cam.zoom, 0}, cam, false, raioNo * 2 / cam.zoom, raioNo / 1 / cam.zoom, raioNo * 0.5f / cam.zoom, DARKGREEN);
+        drawFixedSizeAnnotadedArrow((*nodes)[n]->position, Vector2{Rx, 0}, loadScale, false, raioNo * 2 , raioNo / 1, raioNo * 0.5f, SKYBLUE, cam);
 
         float Ry = static_cast<float>(R(n * gln + 1));
-        float Ry_px = Ry * loadScale;
-        drawArrow((*nodes)[n]->position, Vector2{0, Ry_px / cam.zoom}, cam, false, raioNo * 2 / cam.zoom, raioNo / 1 / cam.zoom, raioNo * 0.5f / cam.zoom, DARKGREEN);
-
-
-
+        drawFixedSizeAnnotadedArrow((*nodes)[n]->position, Vector2{0, Ry}, loadScale, false, raioNo * 2 , raioNo / 1, raioNo * 0.5f, SKYBLUE, cam);
     }
 }
 
