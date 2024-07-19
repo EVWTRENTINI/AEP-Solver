@@ -211,7 +211,7 @@ StructuralAnalysis analysis;
 		closestNode = nodeManager.FindClosestNode(worldPosition, cameraController.camera);
 		drawCursorOnClosestNode = true;	
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && closestNode){
-			closestNode->AddLoad(topMenu->force);
+			closestNode->AddLoad(topMenu->force, topMenu->moment);
 		}
 	}
 
@@ -219,7 +219,7 @@ StructuralAnalysis analysis;
 		closestNode = nodeManager.FindClosestNode(worldPosition, cameraController.camera);
 		drawCursorOnClosestNode = true;	
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && closestNode){
-			closestNode->AddLoad(Vector2{0, 0});
+			closestNode->AddLoad(Vector2{0, 0}, 0);
 		}
 	}
 

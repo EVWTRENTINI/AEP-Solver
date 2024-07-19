@@ -24,9 +24,9 @@ Support support;
 PointLoad load;
 
 
-Node() : id(count++), position({0, 0}), support(Support::None), load(PointLoad(Vector2{0, 0})) {}
+Node() : id(count++), position({0, 0}), support(Support::None), load(PointLoad(Vector2{0, 0}, 0)) {}
 
-Node(Vector2 pos) : id(count++), position(pos), support(Support::None), load(PointLoad(Vector2{0, 0})) {
+Node(Vector2 pos) : id(count++), position(pos), support(Support::None), load(PointLoad(Vector2{0, 0}, 0)) {
     std::cout << "Criando Node com número: " << id << ", x: " << position.x << ", y: " << position.y << std::endl;
 }
 
@@ -102,8 +102,9 @@ bool IsNearby(Vector2 target, float radius, float zoom) const {
     return Vector2Distance(position, target) <= radius/zoom;
 }
 
-void AddLoad(Vector2 f){
+void AddLoad(Vector2 f, float m){
     load.force = f;
+    load.moment = m;
 }
 
 void DrawLoad(Camera2D camera) const{

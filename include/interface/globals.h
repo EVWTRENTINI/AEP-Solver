@@ -12,7 +12,7 @@ float shearScale = 20; // pixel/force unit
 float bendingScale = 20; // pixel/(force*distance) unit
 
 int mainMenuSize = 24;
-int topMenuSize = 120;
+int topMenuSize = 146;
 int leftMenuSize = 100;
 int rightMenuSize = 0;
 int bottomMenuSize = 0;

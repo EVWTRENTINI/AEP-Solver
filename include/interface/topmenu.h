@@ -39,6 +39,7 @@ public:
 	int buttonWidth;
 	ToolMode lastToolMode = ToolMode::None;
 	Vector2 force = {0, 0};
+	float moment;
 	bool isBeingInteracted;
 	MaterialManager* materialManager;
 	SectionManager* sectionManager;
@@ -158,6 +159,7 @@ public:
     		            titulo = "Concentrado em Nó";
 						const char* caption1 = "Força em x:";
 						const char* caption2 = "Força em y:";
+						const char* caption3 = "Momento:  ";
 						int captionSize1 = ImGui::CalcTextSize(caption1).x;
 						int captionSize2 = ImGui::CalcTextSize(caption2).x;
 						int minCaptionSize = captionSize1;
@@ -177,6 +179,12 @@ public:
     						// Campo de texto para Força em y
 							ImGui::Text(caption2); ImGui::SameLine();
     						if (ImGui::InputFloat("##yForce", &force.y, 0.0f, 0.0f, "%.3f", ImGuiInputTextFlags_CharsDecimal)) {
+    						    
+    						}
+
+							// Campo de texto para Momento em z
+							ImGui::Text(caption3); ImGui::SameLine();
+    						if (ImGui::InputFloat("##Moment", &moment, 0.0f, 0.0f, "%.3f", ImGuiInputTextFlags_CharsDecimal)) {
     						    
     						}
 

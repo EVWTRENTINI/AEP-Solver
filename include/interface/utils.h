@@ -244,6 +244,43 @@ snprintf(annotation, sizeof(annotation), "%.2f", module);
 
 drawArrow(position, Vector2Scale(size, scale * 1 / cam.zoom), inward, arrowLength / cam.zoom, arrowWidth / cam.zoom, lineWidth / cam.zoom, color, cam, annotation);
 
+}
+
+void drawMoment(Vector2 position, float radius, bool isAnticlockwise, float arrowLength, float arrowWidth, float lineWidth, Color color, Camera2D camera, const char* annotation = ""){
+    Vector2 p1;
+    Vector2 p2;
+    Vector2 p3;
+    int nSteps = 16;
+    float arcBegin = .6f * 2 * PI;
+    float arcEnd= .9f * 2 * PI; 
+
+    std::vector<float> x(nSteps + 1);
+    std::vector<float> y(nSteps + 1);
+
+    float angleStep = (arcEnd - arcBegin) / (nSteps);
+
+    for (int i = 0; i < nSteps + 1; ++i) {
+        float angle = arcBegin + i * angleStep;
+        x[i] = position.x + radius * cos(angle);
+        y[i] = position.y + radius * sin(angle);
+    }
+
+    /*p1 = {position.x, position.y};
+    p2 = {position.x - arrowLength, position.y - arrowWidth};
+    p3 = {position.x - arrowLength, position.y + arrowWidth};
 
 
+        p2 = RotatePoint(p1, p2, angle);
+        p3 = RotatePoint(p1, p3, angle);*/
+
+
+    BeginMode2D(camera);  
+    for (int i = 0; i < nSteps; ++i) {
+        Vector2 startPoint = {x[i], y[i]};
+        Vector2 endPoint = {x[i + 1], y[i + 1]};
+        DrawLineEx(startPoint, endPoint, lineWidth, color);
+    }
+    DrawTriangle(p1, p2, p3, color);
+    DrawTriangle(p3, p2, p1, color);
+    EndMode2D();
 }

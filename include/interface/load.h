@@ -28,12 +28,16 @@ class PointLoad : public NodeLoad {
 public:
 
 Vector2 force;
+float moment;
 
 PointLoad() = default;
-PointLoad(Vector2 f) : force(f) {};
+PointLoad(Vector2 f, float m) : force(f), moment(m) {};
+
+
 
 void Draw(Vector2 position, Camera2D camera) const override{
-    drawFixedSizeAnnotadedArrow(position, force, loadScale, false, raioNo * 2 , raioNo / 1, raioNo * 0.5f, RED, camera);
+    drawFixedSizeAnnotadedArrow(position, force, loadScale, false, raioNo * 2, raioNo / 1, raioNo * 0.5f, RED, camera);
+    drawMoment(position, raioNo * 3 / camera.zoom, true, raioNo * 2 / camera.zoom, raioNo / 1 / camera.zoom, raioNo * 0.5f / camera.zoom, PURPLE, camera);
 }
 
 
@@ -41,7 +45,8 @@ void Draw(Vector2 position, Camera2D camera) const override{
 
 template<class Archive>
 void serialize(Archive& ar) {
-    ar(cereal::make_nvp("force", force));
+    ar(cereal::make_nvp("force", force),
+       cereal::make_nvp("moment", moment));
 };
 
 };
