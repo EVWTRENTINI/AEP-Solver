@@ -253,6 +253,10 @@ StructuralAnalysis analysis;
 
 		beamManager.Draw(cameraController.camera);
 
+
+
+
+
 		nodeManager.DrawNodes(cameraController.camera);
 		if (nodeGuideManager.drawNodeGuideSelector){
 			drawSelector(nodeGuideManager.selectorToDraw.center, nodeGuideManager.selectorToDraw.camera, nodeGuideManager.selectorToDraw.color);
@@ -264,7 +268,10 @@ StructuralAnalysis analysis;
 		}
 
 		nodeManager.DrawLoads(cameraController.camera);
-
+		
+		if (isAnalysisUpToDate){
+			analysis.DrawReactions(cameraController.camera);
+		}
 
 		if (drawCursorOnClosestNode){
 			if (closestNode){
@@ -282,9 +289,7 @@ StructuralAnalysis analysis;
     	DrawText(positionText.c_str(), GetScreenWidth() - textWidth - 10, GetScreenHeight() - 30, 20, WHITE);
 		
 
-		if (isAnalysisUpToDate){
-			analysis.DrawReactions(cameraController.camera);
-		}
+		
 	}
 
 	void Update() override
@@ -539,7 +544,9 @@ int main(int argc, char* argv[])
 		if (editor.Open)
 			editor.Show();
 		rlImGuiBegin();
+
 		ImGui::PushFont(font);
+		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 2.0f);
 		DoMainMenu();
 
 		if (ImGuiDemoOpen)
@@ -553,8 +560,10 @@ int main(int argc, char* argv[])
 
 		editor.distanceInputWindow.draw();
 		/*════════════════════════════════════════════════════════*/
-
+		
+		ImGui::PopStyleVar();
 		ImGui::PopFont();
+		
 		rlImGuiEnd();
 
 		EndDrawing();

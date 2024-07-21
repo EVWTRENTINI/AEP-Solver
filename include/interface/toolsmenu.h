@@ -24,7 +24,7 @@ public:
 	{
 		float windowHeight = GetScreenHeight() - topPadding;
 
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(3, 5));
 		ImGui::SetNextWindowPos(ImVec2(0, topPadding)); 
         ImGui::SetNextWindowSize(ImVec2(leftMenuSize, windowHeight));
 		
@@ -32,12 +32,15 @@ public:
 		{
 
 			Focused = ImGui::IsWindowFocused(ImGuiFocusedFlags_ChildWindows);
-			// Desenha oq quiser
+
 			if (windowHeight > 1){
+				//ImVec2 currentSpacing = ImVec2(10, 10); // Ajusta o espaçamento entre os itens
+				//ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, currentSpacing);
+				//ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 5)); // Ajusta o padding ao redor dos botões
 				if (ImGui::BeginChild("Auxílios", ImVec2(ImGui::GetContentRegionAvail().x, windowHeight), ImGuiWindowFlags_NoScrollbar))
 				{
-					ImGui::SetCursorPosX(2);
-					ImGui::SetCursorPosY(3);
+					//ImGui::SetCursorPosX(2);
+					//ImGui::SetCursorPosY(3);
 
 					if (ImGui::Button("Gride", ImVec2(-1, 0)))	{
 						isGridOn = !isGridOn;
@@ -50,6 +53,7 @@ public:
 
 					ImGui::EndChild();
 				}
+				//ImGui::PopStyleVar(2);
 			}
 		}
 		ImGui::End();

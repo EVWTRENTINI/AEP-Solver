@@ -13,7 +13,7 @@ float bendingScale = 20; // pixel/(force*distance) unit
 
 int mainMenuSize = 24;
 int topMenuSize = 146;
-int leftMenuSize = 100;
+int leftMenuSize = 50;
 int rightMenuSize = 0;
 int bottomMenuSize = 0;
 int topPadding = mainMenuSize + topMenuSize;

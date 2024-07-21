@@ -57,9 +57,22 @@ public:
 			float line_height = ImGui::GetItemRectSize().y;
 			ImVec2 p = ImGui::GetCursorScreenPos();
 			ImDrawList* draw_list = ImGui::GetWindowDrawList();
-			draw_list->AddLine(ImVec2(p.x -currentSpacing.x/2 -1, p.y), ImVec2(p.x-currentSpacing.x/2 -1, p.y + line_height), IM_COL32(150, 150, 150, 255));
+			draw_list->AddLine(ImVec2(p.x -currentSpacing.x/2 -0, p.y), ImVec2(p.x-currentSpacing.x/2 -0, p.y + line_height), IM_COL32(150, 150, 150, 255));
 			ImGui::SameLine();
 		}
+	
+	void ShowTooltipWithBorder(const char* text){
+    if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal | ImGuiHoveredFlags_NoSharedDelay | ImGuiHoveredFlags_Stationary))
+    {
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 1.0f);
+        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.6f, 0.6f, 0.6f, 0.6f));
+        ImGui::BeginTooltip();
+        ImGui::TextUnformatted(text);
+        ImGui::EndTooltip();
+        ImGui::PopStyleColor();
+        ImGui::PopStyleVar();
+    }
+}
 	
 	void Setup() override
 	{
@@ -99,7 +112,9 @@ public:
 								toolMode = ToolMode::NodeRem;}
     		            	ImGui::SameLine();
 							if (ImGui::Button("Mover", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
-								toolMode = ToolMode::NodeMov;}
+								toolMode = ToolMode::NodeMov;
+							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
                 			ImGui::Text(titulo);
@@ -116,6 +131,7 @@ public:
 							ImGui::SameLine();
     		            	if (ImGui::Button("Remover", ImVec2(buttonWidth,  ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								toolMode = ToolMode::BeamRem;}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
                 			ImGui::Text(titulo);
@@ -254,24 +270,29 @@ public:
     		            	if (ImGui::Button("Editar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
     		            	ImGui::SameLine();
 							if (ImGui::Button("Duplicar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::SameLine();
 							if (ImGui::Button("Remover", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::EndGroup();
 							ImGui::EndGroup();
 							ImGui::SameLine();
 							if (ImGui::Button("Criar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::SameLine();
 							if (ImGui::Button("Atribuir", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							
 
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
@@ -312,24 +333,29 @@ public:
     		            	if (ImGui::Button("Editar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
     		            	ImGui::SameLine();
 							if (ImGui::Button("Duplicar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::SameLine();
 							if (ImGui::Button("Remover", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::EndGroup();
 							ImGui::EndGroup();
 							ImGui::SameLine();
 							if (ImGui::Button("Criar", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							ImGui::SameLine();
 							if (ImGui::Button("Atribuir", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y))){
 								
 							}
+							ShowTooltipWithBorder("Funcionalidade ainda não implementada");
 							
 
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
