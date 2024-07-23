@@ -326,3 +326,47 @@ snprintf(annotation, sizeof(annotation), "%.2f", fabsf(moment));
 
 drawMoment(position, radius / cam.zoom, moment > 0 ? true : false, arrowLength / cam.zoom, arrowWidth / cam.zoom, lineWidth / cam.zoom, color, cam, annotation);
 }
+
+
+void colorSelector(){
+    static ImVec4 imNormalFill    = rlImGuiColors::Convert(normalFill);
+	static ImVec4 imNormalBorder  = rlImGuiColors::Convert(normalBorder);
+	static ImVec4 imShearFill     = rlImGuiColors::Convert(shearFill);
+	static ImVec4 imShearBorder   = rlImGuiColors::Convert(shearBorder);
+	static ImVec4 imBendingFill   = rlImGuiColors::Convert(bendingFill);
+	static ImVec4 imBendingBorder = rlImGuiColors::Convert(bendingBorder);
+	bool OpenColor = true;
+	if (ImGui::Begin("Cores", &OpenColor))
+	{
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##1", (float*)&imNormalFill, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);
+		normalFill = rlImGuiColors::Convert(imNormalFill);
+		ImGui::SameLine();
+
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##2", (float*)&imNormalBorder, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);
+		normalBorder = rlImGuiColors::Convert(imNormalBorder);				
+		ImGui::SameLine();
+
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##3", (float*)&imShearFill, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);				
+		shearFill = rlImGuiColors::Convert(imShearFill);				
+		ImGui::SameLine();
+
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##4", (float*)&imShearBorder, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);				
+		shearBorder = rlImGuiColors::Convert(imShearBorder);				
+		ImGui::SameLine();
+
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##5", (float*)&imBendingFill, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);				
+		bendingFill = rlImGuiColors::Convert(imBendingFill);				
+		ImGui::SameLine();
+
+		ImGui::SetNextItemWidth(253);
+		ImGui::ColorPicker4("##6", (float*)&imBendingBorder, ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_DisplayRGB);				
+		bendingBorder = rlImGuiColors::Convert(imBendingBorder);				
+		ImGui::SameLine();
+	}
+	ImGui::End();
+}

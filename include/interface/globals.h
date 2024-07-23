@@ -10,12 +10,12 @@ Color forceColor {212, 0, 0, 255};
 Color momentColor {204, 0, 255, 255};
 Color momentReactionColor {215, 125, 224, 255};
 
-Color normalFill {215, 0, 0, 50};
-Color normalBorder {215, 0, 0, 255};
-Color shearFill {0, 0, 215, 50};
-Color shearBorder {0, 0, 215, 255};
-Color bendingFill {173, 61, 255, 50};
-Color bendingBorder {173, 61, 255, 255};
+Color normalFill    {255,   0,   0, 30};
+Color normalBorder  {255, 141, 141, 255};
+Color shearFill     {  3,   0, 255, 30};
+Color shearBorder   {182, 182, 255, 255};
+Color bendingFill   {182,   0, 255, 30};
+Color bendingBorder {235, 191, 255, 255};
 
 
 float loadScale = 20; // pixel/force unit

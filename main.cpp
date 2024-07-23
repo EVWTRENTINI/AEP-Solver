@@ -520,7 +520,6 @@ int main(int argc, char* argv[])
 	editor.Setup();
 	editor.Open = true;
 
-	
 
 	// Main game loop
 	while (!WindowShouldClose() && !Quit)    // Detect window close button or ESC key
@@ -555,6 +554,9 @@ int main(int argc, char* argv[])
 			topMenu.Show();
 
 		editor.distanceInputWindow.draw();
+
+		// colorSelector(); // Seletor de cor para desenvolvedor
+		
 		/*════════════════════════════════════════════════════════*/
 		
 		ImGui::PopStyleVar();
