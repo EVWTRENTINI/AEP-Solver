@@ -495,7 +495,7 @@ int main(int argc, char* argv[])
 	
 
 	SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_WINDOW_RESIZABLE);
-	InitWindow(screenWidth, screenHeight, "Ftool Knockoff");
+	InitWindow(screenWidth, screenHeight, "AEP");
 	SetExitKey(KEY_NULL);
 	SetTargetFPS(244);
 	rlImGuiBeginInitImGui();
