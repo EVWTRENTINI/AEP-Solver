@@ -1,0 +1,1009 @@
+{
+    "editor": {
+        "nodeManager": {
+            "nodes": [
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483649,
+                        "data": {
+                            "id": 0,
+                            "position": {
+                                "x": 20.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.10000000149011612,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "id": 1,
+                            "position": {
+                                "x": 25.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483651,
+                        "data": {
+                            "id": 2,
+                            "position": {
+                                "x": 25.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483652,
+                        "data": {
+                            "id": 3,
+                            "position": {
+                                "x": 20.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483653,
+                        "data": {
+                            "id": 4,
+                            "position": {
+                                "x": 30.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483654,
+                        "data": {
+                            "id": 5,
+                            "position": {
+                                "x": 30.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483655,
+                        "data": {
+                            "id": 6,
+                            "position": {
+                                "x": 35.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": -1.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483656,
+                        "data": {
+                            "id": 7,
+                            "position": {
+                                "x": 35.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483657,
+                        "data": {
+                            "id": 8,
+                            "position": {
+                                "x": 40.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483658,
+                        "data": {
+                            "id": 9,
+                            "position": {
+                                "x": 40.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483659,
+                        "data": {
+                            "id": 10,
+                            "position": {
+                                "x": 45.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483660,
+                        "data": {
+                            "id": 11,
+                            "position": {
+                                "x": 45.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483661,
+                        "data": {
+                            "id": 12,
+                            "position": {
+                                "x": 50.0,
+                                "y": 20.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483662,
+                        "data": {
+                            "id": 14,
+                            "position": {
+                                "x": 20.0,
+                                "y": 45.0
+                            },
+                            "support": 5,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483663,
+                        "data": {
+                            "id": 15,
+                            "position": {
+                                "x": 50.0,
+                                "y": 45.0
+                            },
+                            "support": 5,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483664,
+                        "data": {
+                            "id": 16,
+                            "position": {
+                                "x": 50.0,
+                                "y": 25.0
+                            },
+                            "support": 0,
+                            "load": {
+                                "force": {
+                                    "x": 0.0,
+                                    "y": 0.0
+                                },
+                                "moment": 0.0
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "materialManager": {
+            "materials": [
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483665,
+                        "data": {
+                            "name": "Padrão",
+                            "E": 2500000000.0,
+                            "alpha": 0.000009999999747378752
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483666,
+                        "data": {
+                            "name": "Concreto C20",
+                            "E": 2500000000.0,
+                            "alpha": 0.000009999999747378752
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483667,
+                        "data": {
+                            "name": "Aço",
+                            "E": 199999995904.0,
+                            "alpha": 0.000012000000424450264
+                        }
+                    }
+                }
+            ]
+        },
+        "sectionlManager": {
+            "sections": [
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483668,
+                        "data": {
+                            "name": "Padrão",
+                            "area": 0.05999999865889549,
+                            "inertia": 0.00044999999227002263
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483669,
+                        "data": {
+                            "name": "Retangular 20x40",
+                            "area": 0.05999999865889549,
+                            "inertia": 0.00044999999227002263
+                        }
+                    }
+                },
+                {
+                    "ptr_wrapper": {
+                        "id": 2147483670,
+                        "data": {
+                            "name": "Circular d30",
+                            "area": 0.07068579643964768,
+                            "inertia": 0.0003980000037699938
+                        }
+                    }
+                }
+            ]
+        },
+        "beamManager": {
+            "beams": [
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 1
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 1
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 3
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 5
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 7
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 7
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 7
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 7
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 8
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 9
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 12
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 12
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 11
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 13
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 12
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 13
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 4
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 14
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 12
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 16
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 16
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 13
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                },
+                {
+                    "startNode": {
+                        "ptr_wrapper": {
+                            "id": 16
+                        }
+                    },
+                    "endNode": {
+                        "ptr_wrapper": {
+                            "id": 15
+                        }
+                    },
+                    "material": {
+                        "ptr_wrapper": {
+                            "id": 17
+                        }
+                    },
+                    "section": {
+                        "ptr_wrapper": {
+                            "id": 20
+                        }
+                    }
+                }
+            ]
+        },
+        "cameraController": {
+            "camera": {
+                "offset": {
+                    "x": 602.0,
+                    "y": 264.0
+                },
+                "target": {
+                    "x": 33.8192253112793,
+                    "y": 22.12120819091797
+                },
+                "rotation": 0.0,
+                "zoom": 20.00003433227539
+            },
+            "bZoom": 20.000022888183595
+        }
+    }
+}

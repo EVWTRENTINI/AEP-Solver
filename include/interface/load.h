@@ -36,8 +36,8 @@ PointLoad(Vector2 f, float m) : force(f), moment(m) {};
 
 
 void Draw(Vector2 position, Camera2D camera) const override{
-    drawFixedSizeAnnotadedArrow(position, force, loadScale, false, raioNo * 2, raioNo / 1, raioNo * 0.5f, RED, camera);
-    drawMoment(position, raioNo * 3 / camera.zoom, true, raioNo * 2 / camera.zoom, raioNo / 1 / camera.zoom, raioNo * 0.5f / camera.zoom, PURPLE, camera);
+    drawFixedSizeAnnotadedArrow(position, force, loadScale, false, raioNo * 2, raioNo / 1, raioNo * 0.5f, forceColor, camera);
+    drawFixedSizeAnnotadedMoment(position, moment, raioNo * 5, raioNo * 2, raioNo / 1, raioNo * 0.5f, momentColor, camera);
 }
 
 

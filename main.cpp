@@ -227,6 +227,7 @@ StructuralAnalysis analysis;
 		if (!isAnalysisUpToDate){
 			std::cout << "FAZ ANALISE!" << std::endl;
 			analysis.Run(&nodeManager.nodes, &beamManager.beams);
+			analysis.EvalInternalForces();
 			isAnalysisUpToDate = true;
 		}
 	}
@@ -251,6 +252,9 @@ StructuralAnalysis analysis;
 		if (isGuideOn)
 			nodeGuideManager.DrawGuides(cameraController.camera);
 
+		if (isAnalysisUpToDate){
+			analysis.DrawDiagram(cameraController.camera);
+		}
 		beamManager.Draw(cameraController.camera);
 
 

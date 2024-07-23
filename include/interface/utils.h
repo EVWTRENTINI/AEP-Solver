@@ -250,9 +250,10 @@ void drawMoment(Vector2 position, float radius, bool isAnticlockwise, float arro
     Vector2 p1;
     Vector2 p2;
     Vector2 p3;
-    int nSteps = 16;
-    float arcBegin = .6f * 2 * PI;
-    float arcEnd= .9f * 2 * PI; 
+    int nSteps = 18;
+    float arcBegin = .4f * 2 * PI;
+    float arcEnd= .1f * 2 * PI;
+
 
     std::vector<float> x(nSteps + 1);
     std::vector<float> y(nSteps + 1);
@@ -265,13 +266,27 @@ void drawMoment(Vector2 position, float radius, bool isAnticlockwise, float arro
         y[i] = position.y + radius * sin(angle);
     }
 
-    /*p1 = {position.x, position.y};
-    p2 = {position.x - arrowLength, position.y - arrowWidth};
-    p3 = {position.x - arrowLength, position.y + arrowWidth};
+    float xS;
+    float yS;
+    float angleS;
+
+    if (isAnticlockwise){
+        xS = x.back();
+        yS = y.back();
+        angleS = arcBegin + PI;
+    }else{
+        xS = x.front();
+        yS = y.front();
+        angleS = arcEnd + PI;
+    }
+
+    p1 = {xS, yS};
+    p2 = {xS - arrowLength, yS - arrowWidth};
+    p3 = {xS - arrowLength, yS + arrowWidth};
 
 
-        p2 = RotatePoint(p1, p2, angle);
-        p3 = RotatePoint(p1, p3, angle);*/
+    p2 = RotatePoint(p1, p2, angleS);
+    p3 = RotatePoint(p1, p3, angleS);
 
 
     BeginMode2D(camera);  
@@ -283,4 +298,31 @@ void drawMoment(Vector2 position, float radius, bool isAnticlockwise, float arro
     DrawTriangle(p1, p2, p3, color);
     DrawTriangle(p3, p2, p1, color);
     EndMode2D();
+
+    
+    if (strcmp(annotation, "") != 0) {
+        int intOffset = 3;
+        Vector2 offset = Vector2Scale(Vector2{0, 1}, intOffset / camera.zoom);
+        Vector2 textSizeOri = MeasureTextEx(fontTtf, annotation, myFontSize, 1);
+        Vector2 textSize = Vector2{textSizeOri.x, textSizeOri.y * .6f};
+        Vector2 textPositionWorld = Vector2{position.x + offset.x, position.y + radius + offset.y};
+        Vector2 textPosition = Vector2Subtract(GetWorldToScreen2D(textPositionWorld, camera), Vector2Scale(textSize, .5f));
+        Vector2 textCenterOffset = FindIntersection(textSize, Vector2{0, -radius / camera.zoom}); // Não entendi o por que do sinal de menos
+        textPosition = Vector2{textPosition.x + textCenterOffset.x, textPosition.y - textCenterOffset.y};
+        //DrawRectangleLines(textPosition.x, textPosition.y, textSize.x, textSize.y, YELLOW);
+	    DrawTextEx(fontTtf, annotation, Vector2{textPosition.x, textPosition.y - (textSizeOri.y - textSize.y)/2 - textSizeOri.y*.07f}, myFontSize, 1, color);
+
+    }
+}
+
+
+void drawFixedSizeAnnotadedMoment(Vector2 position, float moment, float radius, float arrowLength, float arrowWidth, float lineWidth, Color color, Camera2D cam){
+if (fabsf(moment) < 0.0000000001f)
+    return;
+
+
+char annotation[256];
+snprintf(annotation, sizeof(annotation), "%.2f", fabsf(moment));
+
+drawMoment(position, radius / cam.zoom, moment > 0 ? true : false, arrowLength / cam.zoom, arrowWidth / cam.zoom, lineWidth / cam.zoom, color, cam, annotation);
 }
