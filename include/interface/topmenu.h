@@ -3,6 +3,7 @@
 #include "imgui.h"
 #include "globals.h"
 #include "section.h"
+#include <string>
 
 enum class ToolMode
 {
@@ -45,34 +46,40 @@ public:
 	SectionManager* sectionManager;
 	int materials_current_idx = 0;
 	int sections_current_idx = 0;
-
+	float escaleMax = 100.f;
+	std::string formatString;
 	
 
 	TopMenuWindow(MaterialManager* matMan, SectionManager* secMan) : materialManager(matMan), sectionManager(secMan) {}
 
 	void VerticalSeparator() {
-			ImGuiStyle& style = ImGui::GetStyle();
-			ImVec2 currentSpacing = style.ItemSpacing;
-			ImGui::SameLine(); 
-			float line_height = ImGui::GetItemRectSize().y;
-			ImVec2 p = ImGui::GetCursorScreenPos();
-			ImDrawList* draw_list = ImGui::GetWindowDrawList();
-			draw_list->AddLine(ImVec2(p.x -currentSpacing.x/2 -0, p.y), ImVec2(p.x-currentSpacing.x/2 -0, p.y + line_height), IM_COL32(150, 150, 150, 255));
-			ImGui::SameLine();
-		}
+		ImGuiStyle& style = ImGui::GetStyle();
+		ImVec2 currentSpacing = style.ItemSpacing;
+		ImGui::SameLine(); 
+		float line_height = ImGui::GetItemRectSize().y;
+		ImVec2 p = ImGui::GetCursorScreenPos();
+		ImDrawList* draw_list = ImGui::GetWindowDrawList();
+		draw_list->AddLine(ImVec2(p.x -currentSpacing.x/2 -0, p.y), ImVec2(p.x-currentSpacing.x/2 -0, p.y + line_height), IM_COL32(150, 150, 150, 255));
+		ImGui::SameLine();
+	}
 	
 	void ShowTooltipWithBorder(const char* text){
-    if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal | ImGuiHoveredFlags_NoSharedDelay | ImGuiHoveredFlags_Stationary))
-    {
-        ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 1.0f);
-        ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.6f, 0.6f, 0.6f, 0.6f));
-        ImGui::BeginTooltip();
-        ImGui::TextUnformatted(text);
-        ImGui::EndTooltip();
-        ImGui::PopStyleColor();
-        ImGui::PopStyleVar();
-    }
-}
+    	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal | ImGuiHoveredFlags_NoSharedDelay | ImGuiHoveredFlags_Stationary)){
+    	    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 1.0f);
+    	    ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.6f, 0.6f, 0.6f, 0.6f));
+    	    ImGui::BeginTooltip();
+    	    ImGui::TextUnformatted(text);
+    	    ImGui::EndTooltip();
+    	    ImGui::PopStyleColor();
+    	    ImGui::PopStyleVar();
+    	}
+	}
+
+	std::string GenerateFormatString(float value) {
+	    int precision = std::max(0, static_cast<int>(std::ceil(std::log10(100.0f / value))));
+	    return "%." + std::to_string(precision) + "f\npixels";
+	}
+
 	
 	void Setup() override
 	{
@@ -225,7 +232,8 @@ public:
 						Nbuttons = 1;
 						buttonWidth = 70;
     		            ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
-    		            	ImGui::VSliderFloat("##v", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &loadScale, 0.0f, 100.0f, "%.1f\npixels");
+							formatString = GenerateFormatString(escaleMax);
+    		            	ImGui::VSliderFloat("##v", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &loadScale, 0.0f, escaleMax, formatString.c_str());
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
                 			ImGui::Text(titulo);
@@ -377,7 +385,8 @@ public:
 								toolMode = ToolMode::ShowNormal;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##normalScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &normalScale, 0.0f, 100.0f, "%.1f\npixels");
+							formatString = GenerateFormatString(escaleMax);
+							ImGui::VSliderFloat("##normalScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &normalScale, 0.0f, escaleMax, formatString.c_str());
 							
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
@@ -395,7 +404,8 @@ public:
 								toolMode = ToolMode::ShowShear;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##shearScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &shearScale, 0.0f, 100.0f, "%.1f\npixels");
+							formatString = GenerateFormatString(escaleMax);
+							ImGui::VSliderFloat("##shearScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &shearScale, 0.0f, escaleMax, formatString.c_str());
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
@@ -412,7 +422,8 @@ public:
 								toolMode = ToolMode::ShowBending;
 							}
 							ImGui::SameLine();
-							ImGui::VSliderFloat("##bendingScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &bendingScale, 0.0f, 100.0f, "%.1f\npixels");
+							formatString = GenerateFormatString(escaleMax);
+							ImGui::VSliderFloat("##bendingScale", ImVec2(buttonWidth, ImGui::GetContentRegionAvail().y - ImGui::CalcTextSize(titulo).y - currentSpacing.y), &bendingScale, 0.0f, escaleMax, formatString.c_str());
 							
 							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
                 			ImGui::SetCursorPosX(cursorPosX);
@@ -420,9 +431,26 @@ public:
     		            ImGui::EndChild();
 
     		            VerticalSeparator();
-
-
+						titulo = "Configurações";
+						Nbuttons = 2;
+						buttonWidth = 129;
+						ImGui::BeginChild(titulo, ImVec2(padding * 2 + Nbuttons * buttonWidth + (Nbuttons - 1) * currentSpacing.x, 0), true, ImGuiWindowFlags_NoScrollbar);
+							ImGui::Text("Valor máximo da escada:");
+							ImGui::SameLine();
+							ImGui::PushItemWidth(110);
+            				if (ImGui::InputFloat("##escaleMax", &escaleMax, 1.f, 10.0f, "%.2f")){
+								if (escaleMax < 0){
+									escaleMax = 0;
+								}
+							}
+							ImGui::PopItemWidth();
+							cursorPosX = (ImGui::GetContentRegionAvail().x - ImGui::CalcTextSize(titulo).x) / 2;
+                			ImGui::SetCursorPosX(cursorPosX);
+							ImGui::SetCursorPosY(89);
+                			ImGui::Text(titulo);
+						ImGui::EndChild();
     		            ImGui::EndTabItem();
+						VerticalSeparator();
     		        }
 
 					ImGui::PopStyleVar(2);

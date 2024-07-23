@@ -64,8 +64,6 @@ int Node::count = 0;
 
 bool Quit = false;
 
-bool ImGuiDemoOpen = false;
-
 
 
 MaterialManager materialManager;
@@ -411,9 +409,9 @@ StructuralAnalysis analysis;
 		
 
 
-		std::ostringstream positionStream;
+		/*std::ostringstream positionStream;
 		positionStream << "Pos: (" << std::fixed << std::setprecision(3) << worldGridPosition.x << ", " << worldGridPosition.y << ")";
-    	positionText = positionStream.str();
+    	positionText = positionStream.str();*/
 	}
 	template <class Archive>
     void serialize(Archive& ar) {
@@ -469,13 +467,6 @@ void DoMainMenu()
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("Janela"))
-		{
-			ImGui::MenuItem("ImGui Demo", nullptr, &ImGuiDemoOpen);
-
-
-			ImGui::EndMenu();
-		}
 		ImGui::EndMainMenuBar();
 	}
 }
@@ -513,6 +504,9 @@ int main(int argc, char* argv[])
 	fontTtf = LoadFontEx("resources/seguisb.ttf", myFontSize, 0, 250);
 	//fontTtf = LoadFontEx("resources/consola.ttf", fontsize, 0, 250);
 
+	// Desabilitar a criação do arquivo imgui.ini
+    ImGui::GetIO().IniFilename = nullptr;
+
     rlImGuiEndInitImGui();
 
 	ImGui::GetIO().ConfigWindowsMoveFromTitleBarOnly = true;
@@ -532,7 +526,7 @@ int main(int argc, char* argv[])
 	{
 		BeginDrawing();
 		ClearBackground(DARKGRAY);
-		DrawFPS(leftMenuSize, topPadding);
+		//DrawFPS(leftMenuSize, topPadding);
 		
 		
 		/*════════════════════════ UPDATE ════════════════════════*/
@@ -552,9 +546,6 @@ int main(int argc, char* argv[])
 		ImGui::PushFont(font);
 		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 2.0f);
 		DoMainMenu();
-
-		if (ImGuiDemoOpen)
-			ImGui::ShowDemoWindow(&ImGuiDemoOpen);
 
 
 		if (toolsMenu.Open)
