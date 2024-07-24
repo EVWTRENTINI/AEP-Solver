@@ -223,7 +223,12 @@ void drawArrow(Vector2 position, Vector2 size, bool inward, float arrowLength, f
         Vector2 textSize = Vector2{textSizeOri.x, textSizeOri.y * .6f};
         Vector2 textPositionWorld = Vector2{endPosition.x + offset.x, endPosition.y + offset.y};
         Vector2 textPosition = Vector2Subtract(GetWorldToScreen2D(textPositionWorld, camera), Vector2Scale(textSize, .5f));
-        Vector2 textCenterOffset = FindIntersection(textSize, size);
+        Vector2 textCenterOffset;
+        if (!inward){
+            textCenterOffset = FindIntersection(textSize, size);
+        }else{
+            textCenterOffset = Vector2Scale(FindIntersection(textSize, size), -1);
+        }
         textPosition = Vector2{textPosition.x + textCenterOffset.x, textPosition.y - textCenterOffset.y};
         //DrawRectangleLines(textPosition.x, textPosition.y, textSize.x, textSize.y, YELLOW);
 	    DrawTextEx(fontTtf, annotation, Vector2{textPosition.x, textPosition.y - (textSizeOri.y - textSize.y)/2 - textSizeOri.y*.07f}, myFontSize, 1, color);
