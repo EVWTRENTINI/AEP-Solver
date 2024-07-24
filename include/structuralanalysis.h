@@ -474,6 +474,7 @@ switch (toolMode) {
             
 
             Vector2 size = Vector2Subtract(p2, (*beams)[b].startNode->position);
+            size = Vector2Add(size, Vector2Scale(Vector2Normalize(offsetParallelBeam), intOffset / cam.zoom));
             Vector2 sizeFliped = size; // Inverte por que o raylib desenha positivo para baixo
             size = Vector2{sizeFliped.x, -sizeFliped.y}; // Inverte por que o raylib desenha positivo para baixo
 
@@ -497,6 +498,7 @@ switch (toolMode) {
             
 
             Vector2 size = Vector2Subtract(p3, (*beams)[b].endNode->position);
+            size = Vector2Add(size, Vector2Scale(Vector2Normalize(offsetParallelBeam), intOffset / cam.zoom));
             Vector2 sizeFliped = size; // Inverte por que o raylib desenha positivo para baixo
             size = Vector2{sizeFliped.x, -sizeFliped.y}; // Inverte por que o raylib desenha positivo para baixo
 
