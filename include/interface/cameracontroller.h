@@ -12,7 +12,7 @@ public:
 		camera.offset = {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
         camera.target = {0.0f, 0.0f};
         camera.rotation = 0.0f;
-        camera.zoom = 20.0f;
+        camera.zoom = 100.0f;
 
 		bZoom = camera.zoom;
 	}

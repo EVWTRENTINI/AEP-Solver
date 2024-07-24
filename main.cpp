@@ -488,14 +488,14 @@ int main(int argc, char* argv[])
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	int screenWidth = 1900;
-	int screenHeight = 900;
+	int screenWidth = 1024;
+	int screenHeight = 768;
 
 	
 	
 
 	SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_WINDOW_RESIZABLE);
-	InitWindow(screenWidth, screenHeight, "AEP");
+	InitWindow(screenWidth, screenHeight, "AEP Solver");
 	SetExitKey(KEY_NULL);
 	SetTargetFPS(244);
 	rlImGuiBeginInitImGui();
@@ -503,7 +503,7 @@ int main(int argc, char* argv[])
 
     ImFont* font = ImGui::GetIO().Fonts->AddFontFromFileTTF("resources/segoeuisl.ttf", 18);
 	fontTtf = LoadFontEx("resources/seguisb.ttf", myFontSize, 0, 250);
-	//fontTtf = LoadFontEx("resources/consola.ttf", fontsize, 0, 250);
+
 
 	// Desabilitar a criação do arquivo imgui.ini
     ImGui::GetIO().IniFilename = nullptr;
